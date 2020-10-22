@@ -7,7 +7,7 @@ import threading
 ################################################################################################
 ################################################################################################
 
-ip = 'give me an ip here' # <--- IP OF SERVER HERE
+ip = '10.11.5.6' # <--- IP OF SERVER HERE
 port = 5000
 
 Adress = (ip, port)
@@ -50,6 +50,7 @@ def send(token):
         msg["username"] = usernameT
         msg["message"] = messageT
         msg["token"] = token
+        msg["ip"] = socket.gethostbyname(socket.gethostname())
 
         msg = json.dumps(msg)       
 

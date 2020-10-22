@@ -37,6 +37,8 @@ server.listen(5)
 server.setblocking(1)
 socket.setdefaulttimeout(1)
 
+print(socket.gethostbyname(socket.gethostname()))
+
 clients = []
 lastusers = ""
 
@@ -52,6 +54,7 @@ def letters():
 clients = {}
 
 #Receive message
+
 
 
 def recvMsg():
@@ -76,11 +79,12 @@ def recvMsg():
                             else:
                                 print(clients)
                     except Exception as e:
-                        print(e)
+                        clients.pop(i)
+                        print(f"{i} disconected")
                 except Exception as e:
                     continue
                 continue
-        except Exception as e:
+        except: # It will go here if user disconects since clients changes size; Still runs so ill leave it
             continue
 
 
